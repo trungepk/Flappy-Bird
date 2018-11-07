@@ -7,9 +7,11 @@ public class Bird : MonoBehaviour {
     [SerializeField] float upForce = 200f;
     private bool isDead;
     private Rigidbody2D rb2d;
+    private Animator animator;
 
 	void Start () {
         rb2d = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
 	}
 	
 	void Update () {
@@ -19,6 +21,7 @@ public class Bird : MonoBehaviour {
             {
                 rb2d.velocity = Vector2.zero;
                 rb2d.AddForce(new Vector2(0, upForce));
+                animator.SetTrigger("Flap");
             }
         }
 	}
@@ -26,5 +29,6 @@ public class Bird : MonoBehaviour {
     private void OnCollisionEnter2D(Collision2D collision)
     {
         isDead = true;
+        animator.SetBool("Die", true);
     }
 }
