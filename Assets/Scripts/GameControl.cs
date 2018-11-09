@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class GameControl : MonoBehaviour {
     public static GameControl instance;
     [SerializeField] GameObject gameOverText;
-    private bool gameOver;
+    public bool gameOver;
 
 	void Awake () {
         if (instance == null)
